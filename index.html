@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cormack Auto Repair Service - Premium Mobile Mechanics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#ea580c',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Bebas Neue', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Custom CSS */
+        .section {
+            scroll-margin-top: 100px;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ea580c;
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active::after {
+            width: 100%;
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(30, 64, 175, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            border-top-color: #ea580c;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .contact-info-card:hover {
+            border-left-color: #ea580c;
+            background-color: #f8fafc;
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(30, 64, 175, 0.3);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(234, 88, 12, 0.2);
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(234, 88, 12, 0.3);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(90deg, #1e40af 0%, #ea580c 100%);
+            border-radius: 2px;
+        }
+        .floating-logo {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .stats-card {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(30, 64, 175, 0.7) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+        .form-input {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .form-input:focus {
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo Placeholder - Replace with actual logo -->
+                        <div class="flex items-center">
+                            <div class="bg-primary p-2 rounded-lg mr-3">
+                                <i class="fas fa-car text-white text-xl"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-primary logo">CORMACK AUTO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="nav-link text-dark px-3 py-2 text-sm font-medium uppercase tracking-wider">Home</a>
+                    <a href="#about" class="nav-link text-dark px-3 py-2 text-sm font-medium uppercase tracking-wider">About</a>
+                    <a href="#services" class="nav-link text-dark px-3 py-2 text-sm font-medium uppercase tracking-wider">Services</a>
+                    <a href="#reviews" class="nav-link text-dark px-3 py-2 text-sm font-medium uppercase tracking-wider">Reviews</a>
+                    <a href="#contact" class="nav-link text-dark px-3 py-2 text-sm font-medium uppercase tracking-wider">Contact</a>
+                    <a href="#contact" class="btn-secondary text-white font-bold py-2 px-6 rounded-full transition duration-300 ml-4">
+                        Book Now
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-primary focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-light">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-light">About</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-light">Services</a>
+                <a href="#reviews" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-light">Reviews</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-light">Contact</a>
+                <a href="#contact" class="block btn-secondary text-white font-bold py-2 px-4 rounded-full text-center mt-2">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero flex items-center justify-center text-white min-h-screen pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <div class="mb-6">
+                        <span class="bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">Mobile Mechanic</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif;">
+                        PREMIUM AUTO REPAIR <span class="text-secondary">SERVICES</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl">Professional mobile vehicle servicing and repairs with 25 years of industry experience.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#services" class="btn-secondary text-white font-bold py-4 px-8 rounded-full transition duration-300">
+                            Our Services <i class="fas fa-chevron-right ml-2"></i>
+                        </a>
+                        <a href="#contact" class="bg-white text-primary font-bold py-4 px-8 rounded-full transition duration-300 hover:bg-gray-100">
+                            <i class="fas fa-phone-alt mr-2"></i> 01592 570290
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block relative">
+                    <div class="floating-logo">
+                        <!-- Logo graphic placeholder -->
+                        <div class="bg-white p-8 rounded-2xl shadow-2xl inline-block">
+                            <div class="bg-primary p-6 rounded-xl">
+                                <i class="fas fa-car text-white text-8xl"></i>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <span class="text-3xl font-bold text-primary logo">CORMACK AUTO</span>
+                                <p class="text-secondary font-semibold mt-1">SINCE 1998</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Bar -->
+        <div class="absolute bottom-0 left-0 w-full transform translate-y-1/2">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stats-card text-white p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">25+</div>
+                        <div class="text-sm uppercase tracking-wider opacity-80">Years Experience</div>
+                    </div>
+                    <div class="stats-card text-white p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">10K+</div>
+                        <div class="text-sm uppercase tracking-wider opacity-80">Vehicles Serviced</div>
+                    </div>
+                    <div class="stats-card text-white p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">24/7</div>
+                        <div class="text-sm uppercase tracking-wider opacity-80">Emergency Service</div>
+                    </div>
+                    <div class="stats-card text-white p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">100%</div>
+                        <div class="text-sm uppercase tracking-wider opacity-80">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white py-24 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title">About Our Company</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Family-owned business providing premium mobile auto services across Fife and surrounding areas.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mechanic working on car" class="rounded-2xl shadow-2xl w-full">
+                    <div class="absolute -bottom-8 -right-8 bg-primary text-white p-8 rounded-2xl shadow-xl max-w-xs">
+                        <div class="text-4xl font-bold mb-2">25</div>
+                        <div class="text-sm uppercase tracking-wider">Years of Excellence</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-dark mb-6">Trusted Mobile Auto Repair Since 1998</h3>
+                    <p class="text-gray-700 mb-6">Cormack Auto Repair Services is a family-run business providing reliable and efficient mobile vehicle service with fair pricing. With 25 years of experience in mobile servicing, breakdown/light vehicle towing and recovery, we understand the importance of professional, courteous service whether at the roadside, home or workplace.</p>
+                    <p class="text-gray-700 mb-8">We assume our cars should operate correctly when travelling from A to B, but without routine maintenance and servicing, vehicle failure becomes more likely. Our mobile services help prevent these issues with convenient, professional care.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">Manufacturer Warranty Protection</h4>
+                                <p class="text-gray-700">EU Block Exemption Regulations allow us to service your vehicle without invalidating manufacturer warranties when using appropriate quality parts.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark mb-1">Wide Coverage Area</h4>
+                                <p class="text-gray-700">We serve Fife, Lothians, Central, Perth, and Tayside regions with our mobile repair services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title">Our Premium Services</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Comprehensive auto services designed to keep your vehicle running smoothly and safely.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl overflow-hidden">
+                    <div class="bg-primary p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold">Oil Service</h3>
+                                <p class="text-sm opacity-90 mt-1">Essential maintenance</p>
+                            </div>
+                            <div class="bg-secondary p-3 rounded-lg">
+                                <i class="fas fa-oil-can text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check lights</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Change oil and filter</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Top up screen wash and coolant</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Report faults</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Reset service light</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <a href="#contact" class="btn-primary text-white font-bold py-2 px-6 rounded-full text-sm w-full block text-center">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl overflow-hidden">
+                    <div class="bg-primary p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold">Annual Service</h3>
+                                <p class="text-sm opacity-90 mt-1">Every 6000 miles</p>
+                            </div>
+                            <div class="bg-secondary p-3 rounded-lg">
+                                <i class="fas fa-calendar-check text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-3 text-sm">Includes Oil Service plus:</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check all electrical systems</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Visual interior check</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Visual brake check</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Adjust handbrake if necessary</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check fluid levels</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <a href="#contact" class="btn-primary text-white font-bold py-2 px-6 rounded-full text-sm w-full block text-center">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl overflow-hidden">
+                    <div class="bg-primary p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold">Full Service</h3>
+                                <p class="text-sm opacity-90 mt-1">Every 12000 miles</p>
+                            </div>
+                            <div class="bg-secondary p-3 rounded-lg">
+                                <i class="fas fa-car-alt text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-3 text-sm">Includes Annual Service plus:</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check wiper blades</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check and clean brake linings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check exhaust system</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Check tyre pressures and condition</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Replace spark plugs and filters</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <a href="#contact" class="btn-primary text-white font-bold py-2 px-6 rounded-full text-sm w-full block text-center">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl overflow-hidden">
+                    <div class="bg-primary p-6 text-white">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold">Major Service</h3>
+                                <p class="text-sm opacity-90 mt-1">Every 24000 miles</p>
+                            </div>
+                            <div class="bg-secondary p-3 rounded-lg">
+                                <i class="fas fa-tools text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-3 text-sm">Includes Full Service plus:</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Coolant change</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Gearbox and differential oil change</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Brake fluid change (if due)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Starter motor and alternator check</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span>Comprehensive diagnostic scan</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <a href="#contact" class="btn-primary text-white font-bold py-2 px-6 rounded-full text-sm w-full block text-center">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-gray-600 mb-6">Not sure which service your vehicle needs?</p>
+                <a href="#contact" class="btn-secondary text-white font-bold py-4 px-8 rounded-full inline-flex items-center">
+                    <i class="fas fa-headset mr-2"></i> Get Expert Advice
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Don't just take our word for it - hear from our satisfied customers.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D." class="h-12 w-12 rounded-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">John D.</h4>
+                            <div class="flex text-secondary">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Bill came out to fix my car when it broke down on the motorway. He was incredibly professional, fixed the issue quickly, and his prices were very reasonable. Highly recommend Cormack Auto for any vehicle issues!"</p>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center">
+                        <i class="fas fa-car text-primary mr-2"></i>
+                        <span class="text-sm text-gray-600">Volkswagen Golf - Full Service</span>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." class="h-12 w-12 rounded-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Sarah M.</h4>
+                            <div class="flex text-secondary">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"I've been using Cormack Auto for years for all my car servicing needs. They're reliable, honest, and always do a thorough job. The mobile service is so convenient - they come to my workplace which saves me so much time!"</p>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center">
+                        <i class="fas fa-car text-primary mr-2"></i>
+                        <span class="text-sm text-gray-600">Toyota Prius - Annual Service</span>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="flex-shrink-0">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Robert T." class="h-12 w-12 rounded-full object-cover">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Robert T.</h4>
+                            <div class="flex text-secondary">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Excellent service! They came to my home to service my van, which saved me having to take time off work. The work was done to a high standard and they even gave me some useful maintenance tips to keep my van running smoothly."</p>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center">
+                        <i class="fas fa-shuttle-van text-primary mr-2"></i>
+                        <span class="text-sm text-gray-600">Ford Transit - Major Service</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="inline-flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/150/1e40af/ffffff?text=Google" alt="Google Reviews" class="h-12">
+                    <div class="text-left">
+                        <div class="flex text-secondary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-sm text-gray-600">4.8/5 from 127 reviews</p>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <a href="#contact" class="btn-primary text-white font-bold py-4 px-8 rounded-full inline-flex items-center">
+                        <i class="fas fa-pen-fancy mr-2"></i> Leave a Review
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-24 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title">Get In Touch</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mt-6">Contact us today to schedule your vehicle service or to get a free quote.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-primary mb-4">Contact Information</h3>
+                        <p class="text-gray-700">Call Bill directly for immediate assistance or use our contact form for non-urgent inquiries.</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="contact-info-card flex items-start p-6 bg-white rounded-xl">
+                            <div class="bg-primary/10 p-4 rounded-lg mr-4">
+                                <i class="fas fa-phone-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Phone</h4>
+                                <p class="text-gray-700 mt-1">01592 570290</p>
+                                <p class="text-gray-700">07500 144866</p>
+                                <div class="mt-3">
+                                    <a href="tel:01592570290" class="btn-secondary text-white font-bold py-2 px-4 rounded-full text-sm inline-flex items-center">
+                                        <i class="fas fa-phone mr-1"></i> Call Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Address -->
+                        <div class="contact-info-card flex items-start p-6 bg-white rounded-xl">
+                            <div class="bg-primary/10 p-4 rounded-lg mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Address</h4>
+                                <p class="text-gray-700 mt-1">18 WINDMILL ROAD</p>
+                                <p class="text-gray-700">KIRKCALDY KY1 3AQ</p>
+                                <div class="mt-3">
+                                    <a href="https://goo.gl/maps/example" target="_blank" class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm inline-flex items-center">
+                                        <i class="fas fa-directions mr-1"></i> Get Directions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Hours -->
+                        <div class="contact-info-card flex items-start p-6 bg-white rounded-xl">
+                            <div class="bg-primary/10 p-4 rounded-lg mr-4">
+                                <i class="fas fa-clock text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Working Hours</h4>
+                                <p class="text-gray-700 mt-1">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                <p class="text-gray-700">Saturday: 9:00 AM - 2:00 PM</p>
+                                <p class="text-gray-700">Sunday: Emergency calls only</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div class="mt-12">
+                        <h4 class="text-2xl font-bold text-primary mb-6">Our Location</h4>
+                        <div id="map" class="rounded-xl overflow-hidden"></div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-6">Send Us a Message</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required class="form-input w-full px-4 py-3 rounded-lg">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-input w-full px-4 py-3 rounded-lg">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required class="form-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <div>
+                                <label for="vehicle" class="block text-sm font-medium text-gray-700 mb-1">Vehicle Make/Model *</label>
+                                <input type="text" id="vehicle" name="vehicle" required class="form-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed *</label>
+                                <select id="service" name="service" required class="form-input w-full px-4 py-3 rounded-lg">
+                                    <option value="">Select a service</option>
+                                    <option value="oil">Oil Service</option>
+                                    <option value="annual">Annual/Intermediate Service</option>
+                                    <option value="full">Full Service</option>
+                                    <option value="major">Major Service</option>
+                                    <option value="mot">MOT</option>
+                                    <option value="repair">Repair</option>
+                                    <option value="diagnostic">Diagnostic</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                                <textarea id="message" name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-lg"></textarea>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <button type="submit" class="btn-secondary text-white font-bold py-4 px-6 rounded-lg w-full flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i> Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Emergency Banner -->
+                    <div class="mt-8 bg-red-600 text-white p-6 rounded-2xl">
+                        <div class="flex items-center">
+                            <div class="mr-4">
+                                <i class="fas fa-exclamation-triangle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Emergency Breakdown?</h4>
+                                <p class="text-sm opacity-90">Call our 24/7 emergency line: <strong>07500 144866</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary p-2 rounded-lg mr-3">
+                            <i class="fas fa-car text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white logo">CORMACK AUTO</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Premium mobile vehicle servicing and repairs with 25 years of industry experience across Fife and surrounding areas.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Our Services</a></li>
+                        <li><a href="#reviews" class="text-gray-400 hover:text-white transition duration-300">Customer Reviews</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Oil Service</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Annual Service</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Full Service</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Major Service</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">MOT Testing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact Info</h4>
+                    <address class="not-italic text-gray-400">
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                            <span>18 WINDMILL ROAD<br>KIRKCALDY KY1 3AQ</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-phone-alt mr-3 text-primary"></i>
+                            <span>01592 570290</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-mobile-alt mr-3 text-primary"></i>
+                            <span>07500 144866</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <span>info@cormackauto.com</span>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Cormack Auto Repair Service. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary hover:bg-blue-700 text-white p-4 rounded-full shadow-xl transition duration-300 opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed inset-0 flex items-center justify-center bg-black/50 z-50';
+            successMessage.innerHTML = `
+                <div class="bg-white p-8 rounded-2xl max-w-md text-center">
+                    <div class="bg-green-100 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-check-circle text-green-600 text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">Thank You!</h3>
+                    <p class="text-gray-700 mb-6">Your message has been sent successfully. We will get back to you shortly.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="btn-primary text-white font-bold py-3 px-6 rounded-lg">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(successMessage);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Initialize Google Map
+        function initMap() {
+            // Coordinates for Kirkcaldy
+            const kirkcaldy = { lat: 56.1165, lng: -3.1598 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: kirkcaldy,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#616161"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#fefefe"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#e0e0e0"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#eeeeee"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e5e5e5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dadada"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e0e0e0"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e5e5e5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#1e40af"
+                            }
+                        ]
+                    }
+                ]
+            });
+            
+            // Add marker
+            new google.maps.Marker({
+                position: kirkcaldy,
+                map: map,
+                title: "Cormack Auto Repair Service",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                }
+            });
+        }
+    </script>
+    
+    <!-- Load Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
+</body>
+</html>
